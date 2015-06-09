@@ -1,5 +1,5 @@
 {
-  "name": "fleck-node",
+  "name": "fleck-api",
   "version": "0.1",
   "description": "Interface for the Fleck API",
   "main": "./lib/index.js",
