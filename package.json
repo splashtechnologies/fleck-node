@@ -1,20 +1,24 @@
 {
   "name": "fleck-api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Interface for the Fleck API",
   "main": "./lib/index.js",
-  "homepage" : "https://github.com/splashtechnologies/fleck-node",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/splashtechnologies/fleck-node"
+  "homepage": "https://github.com/splashtechnologies/fleck-node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/splashtechnologies/fleck-node"
   },
-  "bugs" : {
-      "url"   : "https://github.com/splashtechnologies/fleck-node/issues",
-      "email" : "mauricio@getfleck.com"
+  "bugs": {
+    "url": "https://github.com/splashtechnologies/fleck-node/issues",
+    "email": "mauricio@getfleck.com"
   },
-  "license" : "MIT",
+  "license": "MIT",
   "scripts": {},
-  "keywords": ["Fleck", "API", "GetFleck"],
+  "keywords": [
+    "Fleck",
+    "API",
+    "GetFleck"
+  ],
   "author": "Mauricio Bustamante <mauricio@getfleck.com>",
   "dependencies": {
     "request": "^2.55.0",
