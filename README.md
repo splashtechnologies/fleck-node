@@ -2,8 +2,6 @@ Fleck-API
 =================
 Interface for the Fleck API
 
-
-
 How To Install:
 =============
 The generated code relies on node package manager (npm) being available to resolve dependencies.
@@ -11,22 +9,31 @@ Once published you can install the library by issuing the following command.
 
     npm install fleck-api --save
 
-Note: For instructions on installing via a local package visit https://docs.npmjs.com/cli/install
 
 How To Use:
 ===========
 The following shows how import the controllers and use:
 
-1) Import the module:
+    // import module
+    var http = require('http');
+    var fleck = require('fleck-api');
 
-        var fleckapi = require('fleck-api');
+    // set your client token
+    fleck.apiToken = 'VALID_TOKEN';
 
-2) Configure any authentication parameters. For example:
+    http.createServer(function (req, res) {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
 
-        var config = fleckapi.configuration;
-        config.apikey = a_secret_key;
+        // set options like image size or language 
+        var options = {};
+        fleck.getRelease(options,function(error, response){
+        
+            // do something with the response
+            console.log('error:',error);
+            console.log('response:',response);
+        });
 
-3) Access various controllers by:
+        res.end('Hello World\n');
 
-        var controller = fleckapi.XYZ;
-        controller.getItems(id, callback);
+    }).listen(1337, '127.0.0.1');
+
