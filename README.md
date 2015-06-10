@@ -68,9 +68,11 @@ The following shows how import the controllers and use:
 Parameters:
 ===========
 
-Param | Description | Valid values | Default
-----------------------------------------------
-Version   | The version of the API        | 1.0                           | 1.0
-Language  | Some fields are localized     | [en,es,ru,pt_PT,pt_BR,de,fr]  | en
-Size      | Size of the image             | [212,250,414,640,750,1242]    | 640
-Secure    | If true, all links use https  | [yes,no]                      | No
+Table of options and its valid values.
+
+|Param | Description | Valid values | Default   |
+|---------------------------------------------- |
+|Version   | The version of the API         | 1.0 | 1.0  |
+|Language  | Some fields are localized      | [en,es,ru,pt_PT,pt_BR,de,fr]  | en  |
+|Size      | Size of the image              | [212,250,414,640,750,1242]    | 640 |
+|Secure    | If true, all links use https   | [yes,no]                      | No  |
