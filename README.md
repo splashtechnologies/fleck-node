@@ -15,61 +15,39 @@ How To Use:
 The following example shows how to use the API:
 
     // import the module
-    var http = require('http');
     var fleck = require('fleck-api');
 
     // set the client API token
     fleck.apiToken = 'valid_token';
 
-    http.createServer(function (req, res) {
-        res.writeHead(200, {'Content-Type': 'text/html'});
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
 
-        var html = "<html><body>";
+    // customize the request. For more info check out the options table
+    // in the reference section
+    var options = {
+        size: fleck.Size.s214,
+        language: fleck.Language.ru,
+        before: yesterday.getTime() / 1000,
+        secure: fleck.Secure.yes
+    };
 
-        var yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
+    // make the request
+    fleck.getRelease(options,function(error, response){
+        // handle error
+        if (error) {
+            console.log('error:',error);
+            return;
+        }
 
-        // customize the request. For more info check out the options table 
-        // in the reference section
-        var options = {
-            size: fleck.Size.s214,
-            language: fleck.Language.ru,
-            before: yesterday.getTime() / 1000,
-            secure: fleck.Secure.yes
-        };
+        // make something with the info
+        var release = response.release;
+        var posts = response.posts;
 
-        // make the request
-        fleck.getRelease(options,function(error, response){
-            // handle error
-            if (error) {
-                console.log('error:',error);
-                res.end("An error has occurred");
-                return;
-            }
+        console.log("Release:", release);
+        console.log("Posts:", posts);
+    });
 
-            // make something with the info
-            var release = response.release;
-            var posts = response.posts;
-
-            html += "<h4>Release:" + release.number + "</h4>";
-            html += "<ul>";
-
-            for(var i=0; i < posts.length; i++) {
-                var post = posts[i];
-
-                html += "<li><img src=\""+post.img_url+"\"/>";
-                html += "<b>"+ post.creator.name +"</b> posted on <i>"+post.topic.name+"</i>";
-                html += "</li>";
-            }
-            html += "</ul>";
-
-            res.end(html);
-        });
-
-
-    }).listen(1337, '127.0.0.1');
-
-    console.log('Server running at http://128.0.0.1:1337/');
 
 
 
@@ -158,7 +136,7 @@ The response is parsed by the library. The following is a JSON response example:
 **Location object**
 
 As of Fleck 2.1, all post can optionally attach a location to a post. Locations are
-selected from a set of thousands of cities around the world. If the post doesn't have 
+selected from a set of thousands of cities around the world. If the post doesn't have
 a location, the response will be a location object with every property with a null value.
 
 | Variable | Type | Description |
