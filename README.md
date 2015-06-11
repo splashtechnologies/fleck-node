@@ -146,7 +146,7 @@ The response is parsed by the library. The following is a JSON response example:
 
 As of Fleck 2.1 users can optionally attach a location to a post. Locations are
 selected from a set of thousands of cities around the world. If the post doesn't have
-a location, the response will be a location object with every property with a null value.
+a location, the response will be a location object with every property set to null.
 
 | Variable | Type | Description |
 |----------|------|-------------|
