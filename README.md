@@ -2,6 +2,9 @@ Fleck-API
 =================
 Interface for the Fleck API.
 
+You must have an API token in order to use it. For getting one, send an email 
+to api@getfleck.com.
+
 How To Install:
 =============
 The generated code relies on node package manager (npm) being available to resolve dependencies.
@@ -18,6 +21,7 @@ The following example shows how to use the API:
     var fleck = require('fleck-api');
 
     // set the client API token
+    // if you don't have one, send an email to api@getfleck.com
     fleck.apiToken = 'DF2BohjGgXJSU9A_hQrZmQPpQlLOiiTi';
 
     // customize the request. For more info check out the options table
@@ -82,7 +86,7 @@ The response is parsed by the library. The following is a JSON response example:
     {
       "posts" :
       [
-            // omited other 19 elements
+            // omitted other 19 elements
             {
               "created": 1433895797,
               "creator": {
@@ -144,9 +148,10 @@ The response is parsed by the library. The following is a JSON response example:
 
 **Location object**
 
-As of Fleck 2.1 users can optionally attach a location to a post. Locations are
-selected from a set of thousands of cities around the world. If the post doesn't have
-a location, the response will be a location object with every property set to null.
+As of Fleck 2.1 users can optionally attach a location to a post. 
+Currently, locations are all cities and not any more specific 
+(all posts in the same city have the same lat/lon). If the post doesn't have
+a location, the response will be a location object with every property with a null value.
 
 | Variable | Type | Description |
 |----------|------|-------------|
