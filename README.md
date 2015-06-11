@@ -18,12 +18,12 @@ The following example shows how to use the API:
     var fleck = require('fleck-api');
 
     // set the client API token
-    fleck.apiToken = 'valid_token';
+    fleck.apiToken = 'DF2BohjGgXJSU9A_hQrZmQPpQlLOiiTi';
 
     // customize the request. For more info check out the options table
     // in the reference section
     var options = {
-        size: fleck.Size.s214,
+        size: fleck.Size.s1242,
         language: fleck.Language.ru,
         secure: fleck.Secure.yes
     };
@@ -36,8 +36,10 @@ The following example shows how to use the API:
             return;
         }
 
-        // make something with the info
+        // do something with the info
         var release = response.release;
+        var posts = response.posts;
+
         options.before = release.timestamp;
 
         fleck.getRelease(options,function(error, response){
@@ -47,7 +49,7 @@ The following example shows how to use the API:
                 return;
             }
 
-            // make something with the info
+            // do something with the info
             var release = response.release;
             var posts = response.posts;
 
@@ -55,7 +57,6 @@ The following example shows how to use the API:
             console.log("Posts:", posts);
         });
     });
-
 
 
 
@@ -118,7 +119,7 @@ The response is parsed by the library. The following is a JSON response example:
 
 | Variable | Type | Description |
 |----------|------|-------------|
-| created   | Integer   | Timestamp of submission with seconds precision. |
+| created   | Float     | Timestamp of submission with seconds precision. |
 | creator   | Creator   | User info |
 | img_url   | String    | Url of the post image with the size requested |
 | location  | Location  | Location of the post. |
@@ -133,7 +134,7 @@ The response is parsed by the library. The following is a JSON response example:
 | Variable | Type | Description |
 |----------|------|-------------|
 | number   | Integer |  Unique release number. Starts at 1. |
-| timestamp | Integer | Timestamp with seconds precision at the time the release was published. |
+| timestamp | Float | Timestamp with seconds precision at the time the release was published. |
 
 **Topic object**
 
@@ -143,7 +144,7 @@ The response is parsed by the library. The following is a JSON response example:
 
 **Location object**
 
-As of Fleck 2.1, all post can optionally attach a location to a post. Locations are
+As of Fleck 2.1 users can optionally attach a location to a post. Locations are
 selected from a set of thousands of cities around the world. If the post doesn't have
 a location, the response will be a location object with every property with a null value.
 
