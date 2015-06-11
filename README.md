@@ -20,15 +20,11 @@ The following example shows how to use the API:
     // set the client API token
     fleck.apiToken = 'valid_token';
 
-    var yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-
     // customize the request. For more info check out the options table
     // in the reference section
     var options = {
         size: fleck.Size.s214,
         language: fleck.Language.ru,
-        before: yesterday.getTime() / 1000,
         secure: fleck.Secure.yes
     };
 
@@ -42,10 +38,22 @@ The following example shows how to use the API:
 
         // make something with the info
         var release = response.release;
-        var posts = response.posts;
+        options.before = release.timestamp;
 
-        console.log("Release:", release);
-        console.log("Posts:", posts);
+        fleck.getRelease(options,function(error, response){
+            // handle error
+            if (error) {
+                console.log('error:',error);
+                return;
+            }
+
+            // make something with the info
+            var release = response.release;
+            var posts = response.posts;
+
+            console.log("Release:", release);
+            console.log("Posts:", posts);
+        });
     });
 
 
